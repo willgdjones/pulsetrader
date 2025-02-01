@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "trading-bot"
+version = "0.1.0"
+description = "A cryptocurrency trading bot implementing momentum strategy"
+authors = ["Your Name <your.email@example.com>"]
+packages = [{include = "src"}]
+
+[tool.poetry.dependencies]
+python = ">=3.9,<4.0"
+ccxt = "^4.2.14"
+pandas = "^2.2.0"
+numpy = "^1.24.0"
+python-dotenv = "^1.0.0"
+coinbase-advanced-py = "^1.0.0"
+tqdm = "^4.67.1"
+openai = "^1.60.2"
+yfinance = "^0.2.52"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+black = "^24.1.0"
+flake8 = "^7.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+bot = "src.main:main"
+test = "pytest:main"
+
+[tool.pytest.ini_options]
+pythonpath = "src"
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+
+[tool.black]
+line-length = 79
+target-version = ['py39']
+include = '\.pyi?$' 
